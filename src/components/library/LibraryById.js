@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 
 export const Library = () => {
     let {libraryId} = useParams()
-    const [library, setlibrary] = useState([])
+    const [library, setLibrary] = useState([])
 
     useEffect(() => {
         getlibrary(libraryId)
@@ -15,15 +15,16 @@ export const Library = () => {
         if (res.ok){
             let json = await res.json()
             console.log(json)
-            setlibrary(json)
+            setLibrary(json)
         }
     }
+
     return(
         <div>
             <h1>{library.name}</h1>
             <b>id: {library.id}</b>
-            <b><br/>{library.user}</b>
-            <b><br/>Books: {library.books}</b>
+            <b><br/>User: {library.user}</b>
+            <b><br/>Books:<br/>{library.books}</b>
         </div>
     )
 }

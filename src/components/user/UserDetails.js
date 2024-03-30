@@ -34,6 +34,7 @@ const User = ({user}) => {
             <b>
                 <Link to={`/user/${userId}/reviews`}>Reviews</Link>
                 <br/><Link to={`/user/${userId}/libraries`}>Libraries</Link>
+                <br/><Link to={`/user/${userId}/bookProgresses`}>BookProgresses</Link>
             </b>
         </div>
     )

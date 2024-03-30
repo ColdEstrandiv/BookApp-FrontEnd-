@@ -13,6 +13,10 @@ import { UserReviews } from './components/review/UserReviewsTable';
 import { Review } from './components/review/ReviewById';
 import { UserLibraries } from './components/library/LibraryTable';
 import { Library } from './components/library/LibraryById';
+import { UserBookProgresses } from './components/bookProgresses/BookProgressTable';
+import { BookProgress } from './components/bookProgresses/BookProgressId';
+import { BookProgressReadings } from './components/reading/ReadingTable';
+import { Reading } from './components/reading/ReadingById';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +46,22 @@ const router = createBrowserRouter([
   {
     path: "/library/:libraryId",
     element: <Library/>
+  },
+  {
+    path: "/user/:userId/bookProgresses",
+    element: <UserBookProgresses/>
+  },
+  {
+    path: "/bookProgress/:bookProgressId",
+    element: <BookProgress/>
+  },
+  {
+    path: "/bookProgress/:bookProgressId/readings",
+    element: <BookProgressReadings/>
+  },
+  {
+    path: "/reading/:readingId",
+    element: <Reading/>
   }
 ])
 

@@ -6,9 +6,6 @@ export const Review = () => {
     let {reviewId} = useParams()
     const [review, setReview] = useState([])
 
-    useEffect(() => {
-        getReview(reviewId)
-    }, [])
 
     const getReview = async(reviewId) => {
         let res = await fetch('http://'+ API_URL + `/review/${reviewId}`)
@@ -18,6 +15,11 @@ export const Review = () => {
             setReview(json)
         }
     }
+    
+    useEffect(() => {
+        getReview(reviewId)
+    }, [])
+
     return(
         <div>
             <h1>{review.book}</h1>

@@ -20,7 +20,7 @@ export const UserLibraries = () => {
         getUserLibraries(userId)
     }, [])
 
-    const UserLibraryTable = () =>{
+    const UserLibraryTable = () => {
         let rows = userLibraries.map(l => <UserLibraryRow library={l} key={l.id}/>)
 
         return(
@@ -38,7 +38,7 @@ export const UserLibraries = () => {
     }
 
     return(<>
-        { userLibraries && <UserLibraryTable/>}
+        {userLibraries && <UserLibraryTable/>}
         <Link to={`/user/${userId}`}>Back to user</Link>
     </>)
 

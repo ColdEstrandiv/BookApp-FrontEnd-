@@ -1,13 +1,54 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter, 
+  RouterProvider
+} from 'react-router-dom';
+import { UserTable } from './components/user/UserTable';
+import { BookTable } from './components/book/BookTable';
+import { UserDetails } from './components/user/UserDetails';
+import { UserReviews } from './components/review/UserReviewsTable';
+import { Review } from './components/review/ReviewById';
+import { UserLibraries } from './components/library/LibraryTable';
+import { Library } from './components/library/LibraryById';
+
+const router = createBrowserRouter([
+  {
+    path: "/users",
+    element: <UserTable/>
+  },
+  {
+    path: "/books",
+    element: <BookTable/>
+  },
+  {
+    path: "/user/:userId",
+    element: <UserDetails/>
+  },
+  {
+    path: "/user/:userId/reviews",
+    element: <UserReviews/>
+  },
+  {
+    path: "/review/:reviewId",
+    element: <Review/>
+  },
+  {
+    path: "/user/:userId/libraries",
+    element: <UserLibraries/>
+  },
+  {
+    path: "/library/:libraryId",
+    element: <Library/>
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 

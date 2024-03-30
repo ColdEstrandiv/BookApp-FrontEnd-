@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from "../../constants";
 import { BookRow } from './BookRow';
+import { Link } from 'react-router-dom';
 
 export const BookTable = () => {
     const [books, setBooks] = useState([])
@@ -18,18 +19,23 @@ export const BookTable = () => {
         getBooks()
     }, [])
 
-    let rows = books.map(b => <BookRow book={b} key={b.title}/>)
+    let rows = books.map(b => <BookRow reFetchBooks={getBooks} book={b} key={b.id}/>)
 
     return(
+        <>
+        <Link to="/book/create">Create a new book</Link>
         <table>
             <thead>
                 <tr>
+                    <th>id</th>
                     <th>Title</th>
                     <th>Author</th>
                     <th>PageCount</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>{ rows }</tbody>
         </table>
+        </>
     )
 }

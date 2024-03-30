@@ -17,6 +17,7 @@ import { UserBookProgresses } from './components/bookProgresses/BookProgressTabl
 import { BookProgress } from './components/bookProgresses/BookProgressId';
 import { BookProgressReadings } from './components/reading/ReadingTable';
 import { Reading } from './components/reading/ReadingById';
+import { BookForm } from './components/book/CreateBook';
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
   {
     path: "/reading/:readingId",
     element: <Reading/>
+  },
+  {
+    path: "/book/create",
+    element: <BookForm/>
   }
 ])
 

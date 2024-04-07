@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from "../../constants";
 import { UserRow } from './UserRow';
+import { Link } from 'react-router-dom';
 
 export const UserTable = () => {
     const [users, setUsers] = useState([])
@@ -19,9 +20,11 @@ export const UserTable = () => {
         getUsers()
     }, [])
 
-    let rows = users.map(u => <UserRow user={u} key={u.username}/>)
+    let rows = users.map(u => <UserRow reFetchUsers={getUsers} user={u} key={u.username}/>)
 
     return(
+        <>
+        <Link to="/user/create">Create a new user</Link>
         <table>
             <thead>
                 <tr>
@@ -31,12 +34,14 @@ export const UserTable = () => {
                     <th>Email</th>
                     <th>Admin</th>
                     <th>Id</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
             <tbody>{ rows }</tbody>
             
         </table>
+        </>
     )
 }
 

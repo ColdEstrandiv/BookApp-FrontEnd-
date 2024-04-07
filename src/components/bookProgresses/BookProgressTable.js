@@ -21,9 +21,11 @@ export const UserBookProgresses = () => {
     }, [])
 
     const UserBookProgressTable = () => {
-        let rows = userBookProgresses.map(bp => <UserBookProgressRow bookProgress={bp} key={bp.id}/>)
+        let rows = userBookProgresses.map(bp => <UserBookProgressRow reFetchBookProgress={getUserBookProgresses} userId={userId} bookProgress={bp} key={bp.id}/>)
 
         return(
+            <>
+            <Link to={`/user/${userId}/books/bookProgress`}>Create Book Progress</Link>
             <table>
                 <thead>
                     <tr>
@@ -31,10 +33,12 @@ export const UserBookProgresses = () => {
                         <th>Book</th>
                         <th>Status</th>
                         <th>Amount of Reads</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>{ rows }</tbody>
             </table>
+            </>
         )
     }
 

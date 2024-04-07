@@ -7,8 +7,8 @@ export const UserLibraries = () => {
     let {userId} = useParams()
     const [userLibraries, setUserLibraries] = useState([])
 
-    const getUserLibraries = async (userId) => {
-        let res = await fetch('http://'+ API_URL + `/user/${userId}/libraries`)
+    const getUserLibraries = async(userId) => {
+        let res = await fetch(`http://${API_URL}/user/${userId}/libraries`)
         if (res.ok){
             let json = await res.json()
             console.log(json)
@@ -21,19 +21,23 @@ export const UserLibraries = () => {
     }, [])
 
     const UserLibraryTable = () => {
-        let rows = userLibraries.map(l => <UserLibraryRow library={l} key={l.id}/>)
+        let rows = userLibraries.map(l => <UserLibraryRow reFetchLibraries={getUserLibraries} library={l} key={l.id}/>)
 
         return(
+            <>
+            <Link to={`/user/${userId}/library/create`}>Create Library</Link>
             <table>
                 <thead>
                     <tr>
                         <th>id</th>
                         <th>Name</th>
                         <th>Amount of Books</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>{ rows }</tbody>
             </table>
+            </>
         )
     }
 

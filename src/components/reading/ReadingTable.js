@@ -7,7 +7,7 @@ export const BookProgressReadings = () => {
     let {bookProgressId} = useParams()
     const [bookProgressReadings, setBookProgressReadings] = useState([])
 
-    const getBookProgress = async (bookProgressId) => {
+    const getBookProgressReadings = async (bookProgressId) => {
         let res = await fetch('http://'+ API_URL + `/bookProgress/${bookProgressId}/readings`)
         if (res.ok){
             let json = await res.json()
@@ -17,13 +17,15 @@ export const BookProgressReadings = () => {
     }
 
     useEffect(() => {
-        getBookProgress(bookProgressId)
+        getBookProgressReadings(bookProgressId)
     }, [])
 
     const BookProgressReadingsTable = () => {
-        let rows = bookProgressReadings.map(r => <ReadingRow reading={r} key={r.id}/>)
+        let rows = bookProgressReadings.map(r => <ReadingRow reFetchReads={getBookProgressReadings} bookProgressId={bookProgressId} reading={r} key={r.id}/>)
 
         return(
+            <>
+            <Link to={`/bookProgress/${bookProgressId}/read/create`}>Create Reading Session</Link>
             <table>
                 <thead>
                     <tr>
@@ -31,10 +33,12 @@ export const BookProgressReadings = () => {
                         <th>Page Count</th>
                         <th>Date Made</th>
                         <th>Read Time</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>{ rows }</tbody>
             </table>
+            </>
         )
     }
 

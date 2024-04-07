@@ -3,7 +3,7 @@ import { API_URL } from "../../constants"
 export const BookRow = ({ book, reFetchBooks }) => {
 
     const deleteBookById = async(bookId) => {
-        await fetch("http://" + API_URL +`/book/${bookId}`, {
+        await fetch("http://" + API_URL + `/book/${bookId}`, {
             method: "DELETE"
         })
         reFetchBooks()

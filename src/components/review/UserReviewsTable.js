@@ -21,18 +21,22 @@ export const UserReviews = () => {
     }, [])
 
     const UserReviewTable = () =>{
-        let rows = userReviews.map(r => <UserReviewRow review={r} key={r.id}/>)
+        let rows = userReviews.map(r => <UserReviewRow reFetchReviews={getUserReviews} userId={userId} review={r} key={r.id}/>)
 
         return(
+            <>
+            <Link to={`/user/${userId}/books/review`}>Create Review</Link>
             <table>
                 <thead>
                     <tr>
                         <th>id</th>
                         <th>Book</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>{ rows }</tbody>
             </table>
+            </>
         )
     }
 

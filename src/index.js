@@ -18,8 +18,21 @@ import { BookProgress } from './components/bookProgresses/BookProgressId';
 import { BookProgressReadings } from './components/reading/ReadingTable';
 import { Reading } from './components/reading/ReadingById';
 import { BookForm } from './components/book/CreateBook';
+import { MainPage } from './components/mainPage/MainPage';
+import { UserForm } from './components/user/CreateNewUser';
+import { LibraryForm } from './components/library/CreateNewLibrary';
+import { ReadingForm } from './components/reading/CreateNewReading';
+import { ReviewBookTable } from './components/review/SelectBookForReview';
+import { ReviewForm } from './components/review/CreateNewReview';
+import { BookProgressBookTable } from './components/bookProgresses/BookProgressBookTable';
+import { ManageBooks } from './components/library/ManageBooksTable';
+import { AddBook } from './components/library/AddBookTable';
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainPage/>
+  },
   {
     path: "/users",
     element: <UserTable/>
@@ -67,6 +80,38 @@ const router = createBrowserRouter([
   {
     path: "/book/create",
     element: <BookForm/>
+  },
+  {
+    path: "/user/create",
+    element: <UserForm/>
+  },
+  {
+    path: "/user/:userId/library/create",
+    element: <LibraryForm/>
+  },
+  {
+    path: "/bookProgress/:bookProgressId/read/create",
+    element: <ReadingForm/>
+  },
+  {
+    path: "/user/:userId/books/review",
+    element: <ReviewBookTable/>
+  },
+  {
+    path: "/user/:userId/book/:bookId/review/create",
+    element: <ReviewForm/>
+  },
+  {
+    path: "/user/:userId/books/bookProgress",
+    element: <BookProgressBookTable/>
+  },
+  {
+    path: "/library/:libraryId/manageBooks",
+    element: <ManageBooks/>
+  },
+  {
+    path: "/library/:libraryId/addBooks",
+    element: <AddBook/>
   }
 ])
 

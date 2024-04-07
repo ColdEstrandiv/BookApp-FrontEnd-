@@ -22,10 +22,12 @@ export const BookProgress = () => {
     return(
         <div>
             <h1>BookProgress</h1>
-            <b>id: {bookProgress.id}</b>
+            <Link to={`/user/${bookProgress.userId}/bookProgresses`}>Back to User BookProgresses</Link>
+            <b><br/>id: {bookProgress.id}</b>
             <b><br/>User: {bookProgress.user}</b>
             <b><br/>Book: {bookProgress.book}</b>
             <b><br/>Status: {bookProgress.status}</b>
+            
             <b><br/><Link to={`/bookProgress/${bookProgressId}/readings`}>ReadingSessions</Link>:{bookProgress.readingSessions}</b>
         </div>
     )

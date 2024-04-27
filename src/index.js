@@ -27,6 +27,36 @@ import { ReviewForm } from './components/review/CreateNewReview';
 import { BookProgressBookTable } from './components/bookProgresses/BookProgressBookTable';
 import { ManageBooks } from './components/library/ManageBooksTable';
 import { AddBook } from './components/library/AddBookTable';
+import { createTheme, MantineProvider, virtualColor } from '@mantine/core';
+import '@mantine/core/styles.css';
+
+
+const myColor = [
+  [
+    "#eef3ff",
+    "#dce4f5",
+    "#b9c7e2",
+    "#94a8d0",
+    "#748dc1",
+    "#5f7cb8",
+    "#5474b4",
+    "#44639f",
+    "#39588f",
+    "#2d4b81"
+  ]
+]
+
+const theme = createTheme({
+  colors: {
+    primary: virtualColor({
+      name: 'primary',
+      dark: 'dark',
+      light: 'yellow'
+
+    }),
+  },
+});
+
 
 const router = createBrowserRouter([
   {
@@ -117,9 +147,12 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>
+    <React.StrictMode>
+      <MantineProvider theme={theme}>
+        <RouterProvider router={router}/>
+      </MantineProvider>
+    </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

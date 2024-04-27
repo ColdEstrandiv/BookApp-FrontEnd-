@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { API_URL } from "../../constants";
 import { useParams } from 'react-router-dom';
 import { BookProgressBookRow } from './BookProgressBookRow';
+import { Card, Table } from '@mantine/core';
 
 export const BookProgressBookTable = () => {
     const [books, setBooks] = useState([])
@@ -23,18 +24,18 @@ export const BookProgressBookTable = () => {
     let rows = books.map(b => <BookProgressBookRow userId={userId} book={b} key={b.id}/>)
 
     return(
-        <>
-        <table>
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>PageCount</th>
-                </tr>
-            </thead>
-            <tbody>{ rows }</tbody>
-        </table>
-        </>
+        <Card>
+        <Table>
+            <Table.Thead>
+                <Table.Tr>
+                    <Table.Th>id</Table.Th>
+                    <Table.Th>Title</Table.Th>
+                    <Table.Th>Author</Table.Th>
+                    <Table.Th>PageCount</Table.Th>
+                </Table.Tr>
+            </Table.Thead>
+            <Table.Tbody>{ rows }</Table.Tbody>
+        </Table>
+        </Card>
     )
 }

@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
-import { API_URL } from '../../constants'
+import { Link } from 'react-router-dom';
+import { API_URL } from '../../constants';
+import { Table } from '@mantine/core';
 
 export const UserReviewRow = ({ review, reFetchReviews, userId }) => {
 
@@ -11,12 +12,12 @@ export const UserReviewRow = ({ review, reFetchReviews, userId }) => {
     }
 
     return(
-        <tr>
-            <td><Link to={`/review/${review.id}`}>{review.id}</Link></td>
-            <td>{review.book}</td>
-            <td>
+        <Table.Tr>
+            <Table.Td><Link to={`/review/${review.id}`}>{review.id}</Link></Table.Td>
+            <Table.Td>{review.book}</Table.Td>
+            <Table.Td>
                 <button onClick={() => deleteReviewById(review.id)}>DELETE</button>
-            </td>
-        </tr>
+            </Table.Td>
+        </Table.Tr>
     )
 }

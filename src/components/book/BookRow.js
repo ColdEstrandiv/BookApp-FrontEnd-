@@ -1,4 +1,5 @@
-import { API_URL } from "../../constants"
+import { API_URL } from "../../constants";
+import { Table } from '@mantine/core';
 
 export const BookRow = ({ book, reFetchBooks }) => {
 
@@ -10,14 +11,14 @@ export const BookRow = ({ book, reFetchBooks }) => {
     }
 
     return (
-        <tr>
-            <td>{book.id}</td>
-            <td>{book.title}</td>
-            <td>{book.author}</td>
-            <td>{book.pageCount}</td>
-            <td>
+        <Table.Tr>
+            <Table.Td>{book.id}</Table.Td>
+            <Table.Td>{book.title}</Table.Td>
+            <Table.Td>{book.author}</Table.Td>
+            <Table.Td>{book.pageCount}</Table.Td>
+            <Table.Td>
                 <button onClick={() => deleteBookById(book.id)}>DELETE</button>
-            </td>
-        </tr>
+            </Table.Td>
+        </Table.Tr>
     )
 }

@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import { API_URL } from '../../constants'
-
+import { Link } from 'react-router-dom';
+import { API_URL } from '../../constants';
+import { Table } from '@mantine/core';
 
 export const ReadingRow = ({ reading, reFetchReads, bookProgressId }) => {
 
@@ -11,15 +11,15 @@ export const ReadingRow = ({ reading, reFetchReads, bookProgressId }) => {
         reFetchReads(bookProgressId)
     }
     return(
-        <tr>
-            <td><Link to={`/reading/${reading.id}`}>{reading.id}</Link></td>
-            <td>{reading.pageCount}</td>
-            <td>{reading.dateMade}</td>
-            <td>{reading.readTime}</td>
-            <td>
+        <Table.Tr>
+            <Table.Td><Link to={`/reading/${reading.id}`}>{reading.id}</Link></Table.Td>
+            <Table.Td>{reading.pageCount}</Table.Td>
+            <Table.Td>{reading.dateMade}</Table.Td>
+            <Table.Td>{reading.readTime}</Table.Td>
+            <Table.Td>
                 <button onClick={() => deleteReadById(reading.id)}>DELETE</button>
-            </td>
+            </Table.Td>
 
-        </tr>
+        </Table.Tr>
     )
 }

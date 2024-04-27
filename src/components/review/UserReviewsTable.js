@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { API_URL } from "../../constants";
 import { Link, useParams } from "react-router-dom";
 import { UserReviewRow } from './UserReviewsRow'
+import { Card, Table } from '@mantine/core';
 
 export const UserReviews = () => {
     let {userId} = useParams()
@@ -24,19 +25,19 @@ export const UserReviews = () => {
         let rows = userReviews.map(r => <UserReviewRow reFetchReviews={getUserReviews} userId={userId} review={r} key={r.id}/>)
 
         return(
-            <>
+            <Card>
             <Link to={`/user/${userId}/books/review`}>Create Review</Link>
-            <table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>Book</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>{ rows }</tbody>
-            </table>
-            </>
+            <Table>
+                <Table.Thead>
+                    <Table.Tr>
+                        <Table.Th>id</Table.Th>
+                        <Table.Th>Book</Table.Th>
+                        <Table.Th>Actions</Table.Th>
+                    </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody>{ rows }</Table.Tbody>
+            </Table>
+            </Card>
         )
     }
 

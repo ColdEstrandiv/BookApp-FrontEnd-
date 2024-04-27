@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { API_URL } from "../../constants";
 import { Link, useParams } from "react-router-dom";
 import { UserLibraryRow } from './LibraryRow';
+import { Card, Table } from '@mantine/core';
 
 export const UserLibraries = () => {
     let {userId} = useParams()
@@ -21,23 +22,23 @@ export const UserLibraries = () => {
     }, [])
 
     const UserLibraryTable = () => {
-        let rows = userLibraries.map(l => <UserLibraryRow reFetchLibraries={getUserLibraries} library={l} key={l.id}/>)
+        let rows = userLibraries.map(l => <UserLibraryRow reFetchLibraries={getUserLibraries} userId={userId} library={l} key={l.id}/>)
 
         return(
-            <>
-            <Link to={`/user/${userId}/library/create`}>Create Library</Link>
-            <table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>Name</th>
-                        <th>Amount of Books</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>{ rows }</tbody>
-            </table>
-            </>
+            <Card>
+                <Link to={`/user/${userId}/library/create`}>Create Library</Link>
+                <Table>
+                    <Table.Thead>
+                        <Table.Tr>
+                            <Table.Th>id</Table.Th>
+                            <Table.Th>Name</Table.Th>
+                            <Table.Th>Amount of Books</Table.Th>
+                            <Table.Th>Actions</Table.Th>
+                        </Table.Tr>
+                    </Table.Thead>
+                    <Table.Tbody>{ rows }</Table.Tbody>
+                </Table>
+            </Card>
         )
     }
 

@@ -1,36 +1,61 @@
-import { useState } from "react"
-import { API_URL } from "../../constants"
-import { useParams } from "react-router-dom"
+import { API_URL } from "../../constants";
+import { Button, Group, Center, Card, Anchor, Textarea } from '@mantine/core';
+import { REACT_URL } from "../../constants";
+import { hasLength, useForm } from '@mantine/form';
+import { useParams } from "react-router-dom";
 
 export const ReviewForm = () => {
+
+    const form = useForm({
+        mode: 'uncontrolled',
+        initialValues: {
+            content: ''
+        },
+        validate: {
+            content: hasLength({ min: 10 }, 'Must be atleast 10 characters'),
+            content: hasLength({ max: 200 }, 'Must be under 200 characters')
+        }
+    })
+
     let {userId} = useParams()
     let {bookId} = useParams()
 
-    const [content, setContent] = useState("")
+    const submitReview= (values) => {
 
-    const updateContent = (event) => setContent(event.target.value)
+        console.log({values})
 
-    const submitReview= (event) => {
-        event.preventDefault()
-        console.log({content})
-        fetch("http://" + API_URL + `/user/${userId}/book/${bookId}/review`, {
+        fetch(`http://"${API_URL}/user/${userId}/book/${bookId}/review`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                content: content
+                content: values.content
             })
         })
     }
 
     return(
-        <>
-        <h1>Write your Review</h1>
-        <form onSubmit={submitReview}>
-            <input type="text" placeholder="content" onChange={updateContent}></input>
-            <button> Submit </button>
-        </form>
-        </>
+        <Center>
+            <Group  pt={150}>
+                <Card w={500} pt={50} bg={'#f6f8fa'} padding={"lg"}>
+                    <form onSubmit={form.onSubmit((values) => submitReview(values))}>
+                        <Textarea
+                            autosize
+                            minRows={3}
+                            label="Review"
+                            placeholder="10-200 characters"
+                            {...form.getInputProps('content')}
+                        />
+                        <Group pt={10} pb={10} justify="center">
+                            <Button type="submit"> Submit </Button>
+                        </Group>
+                    </form>
+                    <Anchor ta={'center'} href={`http://${REACT_URL}/user/${userId}/reviews`} underline="hover" fz={25}>
+                    Back to User reviews
+                    </Anchor>
+                </Card>
+            </Group>
+        </Center>
     )
 }

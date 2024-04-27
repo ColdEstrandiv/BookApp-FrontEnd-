@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from "../../constants";
 import { Link, useParams } from "react-router-dom"
+import { Card, Group } from "@mantine/core"
 
 export const UserDetails = () => {
     let {userId} = useParams()
@@ -21,7 +22,6 @@ export const UserDetails = () => {
 
     return(<>
         { user && <User user={user}/>}
-        <Link to={"/users"}>Back to users</Link>
     </>)
 }
 
@@ -29,14 +29,15 @@ const User = ({user}) => {
     let {userId} = useParams()
 
     return(
-        <div>        
+        <Group justify='center' > 
+        <Card>        
             <h1>{user.username}</h1>
-            <b>
                 <Link to={`/user/${userId}/reviews`}>Reviews</Link>
                 <br/><Link to={`/user/${userId}/libraries`}>Libraries</Link>
                 <br/><Link to={`/user/${userId}/bookProgresses`}>BookProgresses</Link>
-            </b>
-        </div>
+                <br/><Link to={"/users"}>Back to users</Link>
+        </Card>
+        </Group>
     )
 
 }

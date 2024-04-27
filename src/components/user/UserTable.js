@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { API_URL } from "../../constants";
 import { UserRow } from './UserRow';
 import { Link } from 'react-router-dom';
+import { Card, Table } from '@mantine/core';
 
 export const UserTable = () => {
     const [users, setUsers] = useState([])
@@ -23,25 +24,29 @@ export const UserTable = () => {
     let rows = users.map(u => <UserRow reFetchUsers={getUsers} user={u} key={u.username}/>)
 
     return(
-        <>
-        <Link to="/user/create">Create a new user</Link>
-        <table>
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>FirstName</th>
-                    <th>LastName</th>
-                    <th>Email</th>
-                    <th>Admin</th>
-                    <th>Id</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-
-            <tbody>{ rows }</tbody>
-            
-        </table>
-        </>
+        <Card
+        ta={"center"}
+        shadow="sm"
+        radius={"sm"}
+        padding={"md"} 
+        withBorder
+        color='myColor'>
+            <Link to="/user/create">Create a new user</Link>
+            <Table horizontalSpacing={"sm"} verticalSpacing={"lg"} ta={'left'}>
+                <Table.Thead>
+                    <Table.Tr>
+                        <Table.Th>Username</Table.Th>
+                        <Table.Th>FirstName</Table.Th>
+                        <Table.Th>LastName</Table.Th>
+                        <Table.Th>Email</Table.Th>
+                        <Table.Th>Admin</Table.Th>
+                        <Table.Th>Id</Table.Th>
+                        <Table.Th>Actions</Table.Th>
+                    </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody>{ rows }</Table.Tbody>
+        </Table>
+        </Card>
     )
 }
 

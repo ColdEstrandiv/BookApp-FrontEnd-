@@ -1,23 +1,24 @@
-import { Link } from 'react-router-dom'
-import { API_URL } from "../../constants"
+import { Link } from 'react-router-dom';
+import { API_URL } from "../../constants";
+import { Table } from '@mantine/core';
 
-export const UserLibraryRow = ({ library, reFetchLibraries }) => {
+export const UserLibraryRow = ({ library, reFetchLibraries, userId }) => {
 
     const deleteLibraryById = async(libraryId) => {
         await fetch("http://" + API_URL + `/library/${libraryId}`, {
             method: "DELETE"
         })
-        reFetchLibraries()
+        reFetchLibraries(userId)
     }
 
     return(
-        <tr>
-            <td><Link to={`/library/${library.id}`}>{library.id}</Link></td>
-            <td>{library.name}</td>
-            <td>{library.books}</td>
-            <td>
+        <Table.Tr>
+            <Table.Td><Link to={`/library/${library.id}`}>{library.id}</Link></Table.Td>
+            <Table.Td>{library.name}</Table.Td>
+            <Table.Td>{library.books}</Table.Td>
+            <Table.Td>
                 <button onClick={() => deleteLibraryById(library.id)}>DELETE</button>
-            </td>
-        </tr>
+            </Table.Td>
+        </Table.Tr>
     )
 }

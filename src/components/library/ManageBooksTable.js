@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { API_URL } from "../../constants";
 import { Link, useParams } from "react-router-dom";
 import { ManageBooksRow } from './ManageBooksRow';
+import { Card, Table } from '@mantine/core';
 
 export const ManageBooks = () => {
     let {libraryId} = useParams()
@@ -24,21 +25,21 @@ export const ManageBooks = () => {
         let rows = libraryBooks.map(b => <ManageBooksRow reFetchBooks={getLibraryBooks} libraryId={libraryId} book={b} key={b.id}/>)
 
         return(
-            <>
+            <Card>
             <Link to={`/library/${libraryId}/addBooks`}>Add a Book</Link>
-            <table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>PageCount</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>{ rows }</tbody>
-            </table>
-            </>
+            <Table>
+                <Table.Thead>
+                    <Table.Tr>
+                        <Table.Th>id</Table.Th>
+                        <Table.Th>Title</Table.Th>
+                        <Table.Th>Author</Table.Th>
+                        <Table.Th>PageCount</Table.Th>
+                        <Table.Th>Actions</Table.Th>
+                    </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody>{ rows }</Table.Tbody>
+            </Table>
+            </Card>
         )
     }
     return(<>

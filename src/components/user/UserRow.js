@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { API_URL } from "../../constants"
+import { Table } from '@mantine/core';
 
 export const UserRow = ({ user, reFetchUsers }) => {
 
@@ -18,17 +19,17 @@ export const UserRow = ({ user, reFetchUsers }) => {
     }
 
     return (
-        <tr>
-            <td><Link to={`/user/${user.id}`}>{user.username}</Link></td>
-            <td>{user.firstName}</td>
-            <td>{user.lastName}</td>
-            <td>{user.email}</td>
-            <td>{user.admin ? "True" : "False"}</td>
-            <td>{user.id}</td>
-            <td>
+        <Table.Tr>
+            <Table.Td><Link to={`/user/${user.id}`}>{user.username}</Link></Table.Td>
+            <Table.Td>{user.firstName}</Table.Td>
+            <Table.Td>{user.lastName}</Table.Td>
+            <Table.Td>{user.email}</Table.Td>
+            <Table.Td>{user.admin ? "True" : "False"}</Table.Td>
+            <Table.Td>{user.id}</Table.Td>
+            <Table.Td>
                 <button onClick={() => deleteUserById(user.id)}>DELETE</button>
                 <button onClick={() => toggleUserById(user.id)}>ToggleAdmin</button>
-            </td>
-        </tr>
+            </Table.Td>
+        </Table.Tr>
     )
 }

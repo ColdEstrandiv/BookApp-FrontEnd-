@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { API_URL } from "../../constants";
 import { Link, useParams } from "react-router-dom";
 import { UserBookProgressRow } from './BookProgressRow';
+import { Card, Table } from '@mantine/core';
 
 export const UserBookProgresses = () => {
     let {userId} = useParams()
@@ -24,21 +25,21 @@ export const UserBookProgresses = () => {
         let rows = userBookProgresses.map(bp => <UserBookProgressRow reFetchBookProgress={getUserBookProgresses} userId={userId} bookProgress={bp} key={bp.id}/>)
 
         return(
-            <>
-            <Link to={`/user/${userId}/books/bookProgress`}>Create Book Progress</Link>
-            <table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>Book</th>
-                        <th>Status</th>
-                        <th>Amount of Reads</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>{ rows }</tbody>
-            </table>
-            </>
+            <Card>
+                <Link to={`/user/${userId}/books/bookProgress`}>Create Book Progress</Link>
+                <Table>
+                    <Table.Thead>
+                        <Table.Tr>
+                            <Table.Th>id</Table.Th>
+                            <Table.Th>Book</Table.Th>
+                            <Table.Th>Status</Table.Th>
+                            <Table.Th>Amount of Reads</Table.Th>
+                            <Table.Th>Actions</Table.Th>
+                        </Table.Tr>
+                    </Table.Thead>
+                    <Table.Tbody>{ rows }</Table.Tbody>
+                </Table>
+            </Card>
         )
     }
 

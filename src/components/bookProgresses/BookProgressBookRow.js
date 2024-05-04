@@ -17,7 +17,7 @@ export const BookProgressBookRow = ({ book, userId}) => {
             <Table.Td>{book.author}</Table.Td>
             <Table.Td>{book.pageCount}</Table.Td>
             <Table.Td>
-                <Link to={`/user/${userId}/bookprogresses`}>
+                <Link to={`/user/${userId}`}>
                     <button onClick={() => createBookProgress(book.id)}>Create</button>
                 </Link>
             </Table.Td>

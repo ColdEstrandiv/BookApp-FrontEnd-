@@ -45,6 +45,5 @@ export const UserBookProgresses = () => {
 
     return(<>
         {userBookProgresses && <UserBookProgressTable/>}
-        <Link to={`/user/${userId}`}>Back to user</Link>
     </>)
 }

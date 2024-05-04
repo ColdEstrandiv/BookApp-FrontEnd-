@@ -23,7 +23,7 @@ export const Library = () => {
     return(
         <Card>
             <h1>{library.name}</h1>
-            <Link to={`/user/${library.userId}/libraries`}>Back to User Libraries</Link>
+            <Link to={`/user/${library.userId}`}>Back to User</Link>
             <b><br/>id: {library.id}</b>
             <b><br/>User: {library.user}</b>
             <br/><Link to={`/library/${libraryId}/manageBooks`}>Manage Books</Link>

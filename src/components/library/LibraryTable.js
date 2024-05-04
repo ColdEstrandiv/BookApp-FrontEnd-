@@ -44,7 +44,6 @@ export const UserLibraries = () => {
 
     return(<>
         {userLibraries && <UserLibraryTable/>}
-        <Link to={`/user/${userId}`}>Back to user</Link>
     </>)
 
 }

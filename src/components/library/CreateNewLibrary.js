@@ -1,5 +1,5 @@
 import { API_URL } from "../../constants";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button, Center, TextInput, Card, Group, Anchor } from "@mantine/core";
 import { hasLength, useForm } from '@mantine/form';
 import { REACT_URL } from "../../constants";
@@ -45,11 +45,11 @@ export const LibraryForm = () => {
                     />
                     <Group pt={10} pb={10} justify="center">
                         <Button type="submit"> Submit </Button>
+                        <Link to={`/user/${userId}`}>
+                            Back to User
+                        </Link>
                     </Group>
                 </form>
-                <Anchor ta={'center'} href={`http://${REACT_URL}/user/${userId}/libraries`} underline="hover" fz={25}>
-                    Back to User libraries
-                </Anchor>
             </Card>
         </Group>
         </Center> 

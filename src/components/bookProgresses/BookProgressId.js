@@ -22,7 +22,7 @@ export const BookProgress = () => {
     return(
         <div>
             <h1>BookProgress</h1>
-            <Link to={`/user/${bookProgress.userId}/bookProgresses`}>Back to User BookProgresses</Link>
+            <Link to={`/user/${bookProgress.userId}`}>Back to User</Link>
             <b><br/>id: {bookProgress.id}</b>
             <b><br/>User: {bookProgress.user}</b>
             <b><br/>Book: {bookProgress.book}</b>

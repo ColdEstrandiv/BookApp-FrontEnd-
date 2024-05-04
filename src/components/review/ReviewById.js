@@ -25,7 +25,7 @@ export const Review = () => {
         <Box pl={50}>
             <Group justify='left'>
                 <Card>
-                    <Link to={`/user/${review.userId}/reviews`}>Back to User Reviews</Link>
+                    <Link to={`/user/${review.userId}`}>Back to User</Link>
                     <h1>{review.book}</h1>
                     <b>review by {review.user}</b>
                     <b>id: {review.id}</b>

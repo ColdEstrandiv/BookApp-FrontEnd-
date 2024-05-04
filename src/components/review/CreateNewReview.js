@@ -24,7 +24,7 @@ export const ReviewForm = () => {
 
         console.log({values})
 
-        fetch(`http://"${API_URL}/user/${userId}/book/${bookId}/review`, {
+        fetch(`http://${API_URL}/user/${userId}/book/${bookId}/review`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export const ReviewForm = () => {
                             <Button type="submit"> Submit </Button>
                         </Group>
                     </form>
-                    <Anchor ta={'center'} href={`http://${REACT_URL}/user/${userId}/reviews`} underline="hover" fz={25}>
+                    <Anchor ta={'center'} href={`http://${REACT_URL}/user/${userId}`} underline="hover" fz={25}>
                     Back to User reviews
                     </Anchor>
                 </Card>

@@ -43,7 +43,6 @@ export const UserReviews = () => {
 
     return(<>
         { userReviews && <UserReviewTable/>}
-        <Link to={`/user/${userId}`}>Back to user</Link>
     </>)
 
 }
